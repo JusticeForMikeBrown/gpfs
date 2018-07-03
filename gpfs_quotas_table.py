@@ -2,9 +2,8 @@
 __author__ = 'quackmaster@protonmail.com'
 
 # TODO
-# 1) remove athena and use filesystem variable
-# 2) clean up variables so we don't need to use pop
-# 3) figure out a way to better iterate over lists
+# 1) clean up variables so we don't need to use pop
+# 2) figure out a way to better iterate over lists
 
 import argparse
 import pwd
@@ -62,6 +61,9 @@ checkuser()
 # the main function
 def quota():
 
+    # regex to find filesets that contain string 'scratch' or 'store' in their name
+    fsr = r'(?:store|scratch)'
+
     fsc = 'mmrepquota ' + fs + ' --block-size=auto | grep '
     awkc = " | awk ' { print $1 \"     \" $2 \"          \" $4 } '"
 
@@ -74,7 +76,7 @@ def quota():
 
     fileset_list = []
     for string in c2:
-        match = re.search(r'(?:store|scratch)', string)
+        match = re.search(fsr, string)
         if match:
             fileset_list.append(string)
      
@@ -83,8 +85,7 @@ def quota():
 
     fsq = []
     for item in fileset_list:
-
-        fileset_check = 'mmlsquota -j ' + item + ' /dev/athena --block-size=auto | '
+        fileset_check = '/usr/lpp/mmfs/bin/mmlsquota -j ' + item + ' ' + fs + ' --block-size=auto | '
         awkfs_c = " awk ' { print $4 } ' | tail -n 1 "
         getfileset_quota_command = fileset_check + awkfs_c
 
@@ -119,7 +120,7 @@ def quota():
     uq = []
 
     for item in fileset_list:
-        uq_check = 'mmlsquota -u  ' + user + ' athena:' + item + ' --block-size=auto |'
+        uq_check = '/usr/lpp/mmfs/bin/mmlsquota -u  ' + user + ' ' + sys.argv[1] + ':' + item + ' --block-size=auto |'
         uq_awk = "awk ' { print $5 } ' | tail -n 1"
         uq_command = uq_check + uq_awk
 
