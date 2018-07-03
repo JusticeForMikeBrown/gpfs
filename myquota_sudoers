@@ -1,0 +1,6 @@
+
+# all users on server can run myquota command as root without supplying their password at command prompt
+# change filesystem to that which you're wanthing them the ability to check
+
+ALL server = (root) NOPASSWD: /usr/bin/python3.6 /usr/local/bin/gpfs_quotas_table.py filesystem *
+

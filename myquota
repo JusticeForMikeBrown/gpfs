@@ -1,0 +1,9 @@
+# switch to tmp before running gpfs script
+# change $1 below to desired filesystem
+
+cd /tmp
+
+sudo /usr/bin/python3.6 /usr/local/bin/gpfs_quotas_table.py filesystem $USER
+
+# switch back after running script
+cd $OLDPWD
