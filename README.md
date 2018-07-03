@@ -1,13 +1,13 @@
 GPFS Utilities
 ===============
 
-'''changequota.py''' will modify user-level quota within centrally-managed filesets
+*changequota.py* will modify user-level quota within centrally-managed filesets
 
-gpfs_quotas_table.py will print filesets and user-level quotas
+*gpfs_quotas_table.py* will print filesets and user-level quotas
 
-myquota allows user to check their quota without needing to actually explicitly run gpfs_quotas_table.py
+*myquota* allows user to check their quota without needing to actually explicitly run gpfs_quotas_table.py
 
-myquota_sudoers contains a possible sudo configuration
+*myquota_sudoers* contains a possible sudo configuration
 
 Requirements
 ------------
