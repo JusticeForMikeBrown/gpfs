@@ -1,9 +1,7 @@
-# gpfs
-
 GPFS Utilities
 ===============
 
-changequota.py will modify user-level quota within centrally-managed filesets
+'''changequota.py''' will modify user-level quota within centrally-managed filesets
 
 gpfs_quotas_table.py will print filesets and user-level quotas
 
