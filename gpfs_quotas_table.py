@@ -1,6 +1,11 @@
 #!/usr/bin/env python3.6
 __author__ = 'quackmaster@protonmail.com'
 
+# TODO
+# 1) remove athena and use filesystem variable
+# 2) clean up variables so we don't need to use pop
+# 3) figure out a way to better iterate over lists
+
 import argparse
 import pwd
 import os
