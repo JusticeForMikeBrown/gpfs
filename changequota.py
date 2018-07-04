@@ -7,7 +7,6 @@ import pwd
 import os
 import sys
 import subprocess
-import re
 from slackclient import SlackClient
 
 support = 'helpdesk@dev.null'
