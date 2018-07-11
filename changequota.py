@@ -26,19 +26,12 @@ filesystem = sys.argv[2] + ':'
 fileset = sys.argv[3] + ''
 newquota  = sys.argv[4]    
 
-# must use int for newquota value 
-def useint():
-
-    if isinstance(newquota, int):
-       print()
-    else:
-        print("Error! \n \nYou must use integer for new quota value not a string, such as '5TB,' or float like '1.5.'")
-        sys.exit()
-
-useint()
-
 # assign 500K inodes per every TB
-calcf = int(newquota) * int('500000')
+try:
+    calcf = int(newquota) * int('500000')
+except (ValueError,TypeError):
+    print("Error! \n \nYou must use integer for new quota value not a string, such as '5TB,' or float like '1.5.'")
+    sys.exit()
 
 # get user who ran script using sudo
 runas_user = os.environ['SUDO_USER']
