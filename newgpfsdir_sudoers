@@ -1,0 +1,3 @@
+
+# members of gpfspowerusers can run newgpfsdir script
+%gpfspowerusers ALL = (root) NOPASSWD: /usr/bin/python3.6 /usr/local/bin/newgpfsdir.py *
